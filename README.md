@@ -1,5 +1,8 @@
+# スクラッチでマイクラサーバーのステータスを表示
+[![Apache License](https://img.shields.io/github/license/ryusei-star/Scratch-Minecraft-Server-Status?color=44CC11&style=flat-square)](/LICENSE)
+
+# プロジェクト
 https://scratch.mit.edu/projects/1194986383/
-[![Apache License](https://img.shields.io/github/license/ryusei-star/VCBot?color=44CC11&style=flat-square)](/LICENSE)
 
 # 使用しているライブラリ
 
