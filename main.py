@@ -12,6 +12,8 @@ session = sa.login(USERNAME, PASSWORD)
 cloud = session.connect_cloud(PROJECT_ID)
 server = JavaServer.lookup(MC_ADDRESS)
 
+previous_value = ""
+
 try:
     while True:
         try:
@@ -23,7 +25,12 @@ try:
             players = 0
 
         cloud_value = str(online) + str(players)
-        cloud.set_var(VARIABLE_NAME, cloud_value)
-        time.sleep(5)
+
+        if cloud_value != previous_value:
+            cloud.set_var(VARIABLE_NAME, cloud_value)
+            previous_value = cloud_value
+
+        time.sleep(1)
+
 except KeyboardInterrupt:
-    cloud.set_var(VARIABLE_NAME, "2")
+    cloud.set_var(VARIABLE_NAME, "20")
