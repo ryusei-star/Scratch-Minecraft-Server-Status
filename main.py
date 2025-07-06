@@ -1,6 +1,7 @@
 import scratchattach as sa
 import time
 from mcstatus import JavaServer
+import socket
 
 USERNAME = "ユーザー名"
 PASSWORD = "パスワード"
@@ -17,9 +18,11 @@ previous_value = ""
 try:
     while True:
         try:
-            status = server.status()
-            online = 1
-            players = status.players.online
+            server._address.resolve()
+            with socket.create_connection((server.host, server.port), timeout=1):
+                status = server.status()
+                online = 1
+                players = status.players.online
         except Exception:
             online = 0
             players = 0
