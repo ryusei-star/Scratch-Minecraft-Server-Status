@@ -4,6 +4,8 @@
 # プロジェクト
 https://scratch.mit.edu/projects/1194986383/
 
+バグってます、いつか直します
+
 # 使用しているライブラリ
 
 - scratchattach
