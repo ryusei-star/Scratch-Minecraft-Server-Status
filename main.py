@@ -26,4 +26,4 @@ try:
         cloud.set_var(VARIABLE_NAME, cloud_value)
         time.sleep(5)
 except KeyboardInterrupt:
-    cloud.set_var(VARIABLE_NAME, "2")
+    cloud.set_var(VARIABLE_NAME, "20")
