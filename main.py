@@ -1,7 +1,6 @@
 import scratchattach as sa
 import time
 from mcstatus import JavaServer
-import socket
 
 USERNAME = "ユーザー名"
 PASSWORD = "パスワード"
@@ -13,27 +12,18 @@ session = sa.login(USERNAME, PASSWORD)
 cloud = session.connect_cloud(PROJECT_ID)
 server = JavaServer.lookup(MC_ADDRESS)
 
-previous_value = ""
-
 try:
     while True:
         try:
-            server._address.resolve()
-            with socket.create_connection((server.host, server.port), timeout=1):
-                status = server.status()
-                online = 1
-                players = status.players.online
+            status = server.status()
+            online = 1
+            players = status.players.online
         except Exception:
             online = 0
             players = 0
 
         cloud_value = str(online) + str(players)
-
-        if cloud_value != previous_value:
-            cloud.set_var(VARIABLE_NAME, cloud_value)
-            previous_value = cloud_value
-
-        time.sleep(1)
-
+        cloud.set_var(VARIABLE_NAME, cloud_value)
+        time.sleep(5)
 except KeyboardInterrupt:
-    cloud.set_var(VARIABLE_NAME, "20")
+    cloud.set_var(VARIABLE_NAME, "2")
